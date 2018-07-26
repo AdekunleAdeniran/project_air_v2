@@ -54,3 +54,24 @@ class Place(BaseModel, Base):
         latitude = 0.0
         longitude = 0.0
         amenity_ids = []
+
+        @property
+        def reviews(self):
+            """Returns a list of reviews"""
+            review_list = []
+            for rev in models.storage.all("Review").values():
+                if rev.place_id == self.id:
+                    review_list.append(rev)
+            return review_list
+
+        @property
+        def amenities(self):
+            """amenities getter function"""
+            return self.amenity_ids
+
+        @amenities.setter
+        def amenities(self, obje=None):
+            """amenities setter function"""
+            if type(obje) in Amenity:
+                if obje.place_amenity.place_id == self.id:
+                    self.amenity_ids.append(obje.id)
