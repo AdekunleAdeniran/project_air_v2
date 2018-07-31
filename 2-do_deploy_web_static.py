@@ -13,7 +13,7 @@ def do_deploy(archive_path):
     if os.path.exists(archive_path):
         put(archive_path, '/tmp/')
         new_path = archive_path[9:]
-        de_path = '/data/web_static/releases/{}/' / format(new_path)[0:-5]
+        de_path = '/data/web_static/releases/{}/'.format(new_path)[0:-5]
         run('mkdir -p {}'.format(de_path))
         run('tar -xzf /tmp/{} -C {}'.format(new_path, de_path))
         run('rm /tmp/{}'.format(new_path))
