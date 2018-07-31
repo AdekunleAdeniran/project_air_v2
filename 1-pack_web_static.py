@@ -4,6 +4,7 @@
 from fabric.api import *
 from time import strftime as ti
 
+
 def do_pack():
     """Fabric script to compress files in web_static"""
     local("mkdir -p versions")
