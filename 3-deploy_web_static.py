@@ -15,17 +15,17 @@ def do_pack():
     ver = ti("%Y%m%d%H%M%S")
     arc = local("tar -cvzf versions/web_static_{}.tgz web_static".format(ver))
 
-    if arc is None:
-        return None
+    if arc.failed:
+        return False
     else:
-        return ("versions/web_static_{}".format(ver))
+        return ("versions/web_static_{}.tgz".format(ver))
 
 
 def do_deploy(archive_path):
     """Fabric script to deploy web_static to servers"""
     if os.path.exists(archive_path):
         new_path = archive_path[9:]
-        de_path = '/data/web_static/releases/{}/'.format(new_path)[0:-5]
+        de_path = '/data/web_static/releases/{}/'.format(new_path)[0:-4]
         put(archive_path, '/tmp/')
         run('mkdir -p {}'.format(de_path))
         run('tar -xzf /tmp/{} -C {}'.format(new_path, de_path))
@@ -38,11 +38,12 @@ def do_deploy(archive_path):
         return True
     return False
 
-
 def deploy():
     """Created and distributes an archinve to two web servers"""
-    path = do_pack()
-    if path is None:
+    archive_path = do_pack()
+    if archive_path is False:
         return False
-    res = do_deploy(path)
-    return res
+    return do_deploy(archive_path)
+
+if __name__ == "__main__":
+    deploy()
