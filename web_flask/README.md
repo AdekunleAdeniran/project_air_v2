@@ -16,6 +16,7 @@
 * How to display in HTML data from a MySQL database
 
 **Install Flask**
+
 	  $ pip3 install Flask
 
 ![](https://s3.amazonaws.com/intranet-projects-files/concepts/74/hbnb_step3.png)
