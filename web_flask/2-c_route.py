@@ -15,12 +15,12 @@ def hello_world():
 @app.route('/hbnb')
 def hbnb():
     """Python function to print HBNB"""
-    return "HBNB!"
+    return "HBNB"
 
 
 @app.route('/c/<var>')
 def c_is_fun(var):
-    """Python function to print HBNB"""
+    """Python function to print C with directory"""
     return "C " + var.replace('_', ' ')
 
 

@@ -5,9 +5,10 @@
 
 from models.base_model import BaseModel, Base
 import sqlalchemy
+import models
 from sqlalchemy import Column, Integer, String, DateTime
 from sqlalchemy.ext.declarative import declarative_base
-from sqlalchemy.orm import relationship
+from sqlalchemy.orm import relationship, backref
 from os import getenv
 
 
@@ -15,25 +16,20 @@ class State(BaseModel, Base):
     '''
         Implementation for the State.
     '''
+    if getenv('HBNB_TYPE_STORAGE') != 'db':
 
-    __tablename__ = "states"
-    if getenv("HBNB_TYPE_STORAGE") == "db":
-        name = Column(String(128), nullable=False)
-        cities = relationship('City', cascade='all, delete-orphan',
-                              backref='state')
-        cities = relationship('City', cascade='all, delete', backref='state')
-
+        @property
+        def cities(self):
+            """Setter Method to list cities"""
+            city_list = []
+            for key, value in models.storage.all().items():
+                try:
+                    if value.state_id == self.id:
+                        city_list.append(value)
+                except BaseException:
+                    pass
+            return city_list
     else:
-        name = ""
-
-    @property
-    def cities(self):
-        '''
-        Get a list of cities based on state.id
-        '''
-        my_list = []
-
-        for value in models.storage.all(City).values():
-            if city.state_id == self.id:
-                my_list.append(value)
-            return my_list
+        cities = relationship('City', cascade='all, delete', backref='state')
+    __tablename__ = 'states'
+    name = Column(String(128), nullable=False)

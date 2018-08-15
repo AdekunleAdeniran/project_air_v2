@@ -15,7 +15,7 @@ def hello_world():
 @app.route('/hbnb')
 def hbnb():
     """Python function to print HBNB"""
-    return "HBNB!"
+    return "HBNB"
 
 
 @app.route('/c/<text>')
