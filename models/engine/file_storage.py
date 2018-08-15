@@ -70,7 +70,6 @@ class FileStorage:
                 del FileStorage.__objects[key]
             self.save()
 
-
     def close(self):
         """
         Close Engine after Deserializing JSON File to __objects

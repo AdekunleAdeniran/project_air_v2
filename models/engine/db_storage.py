@@ -42,7 +42,7 @@ class DBStorage:
                 all_dict[key] = item
         else:
             for item, value in models.classes.items():
-                if type(value) is not type(BaseModel):
+                if not isinstance(value, type(BaseModel)):
                     for it in self.__session.query(value).all():
                         key = '{}.{}'.format(it.__class__.__name__, it.id)
                         all_dict[key] = it
@@ -67,7 +67,6 @@ class DBStorage:
         Session = sessionmaker(bind=self.__engine, expire_on_commit=False)
         Session = scoped_session(Session)
         self.__session = Session
-
 
     def close(self):
         """Calls remove() method on private session attributes"""
