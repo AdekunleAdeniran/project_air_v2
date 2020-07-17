@@ -1,13 +1,13 @@
 -- Create Database and grant permission for test
 
-CREATE DATABASE IF NOT EXISTS hbnb_test_db;
+CREATE DATABASE IF NOT EXISTS new_test_db;
 GRANT USAGE ON *.*
-      TO 'hbnb_test'@'localhost'
-      IDENTIFIED BY 'hbnb_test_pwd';
+      TO 'new_test'@'localhost'
+      IDENTIFIED BY 'new_test_pwd';
 GRANT SELECT ON `performance_schema`.*
-      TO 'hbnb_test'@'localhost'
-      IDENTIFIED BY 'hbnb_test_pwd';
-GRANT ALL PRIVILEGES ON `hbnb_test_db`.*
-      TO 'hbnb_test'@'localhost'
-      IDENTIFIED BY 'hbnb_test_pwd';
+      TO 'new_test'@'localhost'
+      IDENTIFIED BY 'new_test_pwd';
+GRANT ALL PRIVILEGES ON `new_test_db`.*
+      TO 'new_test'@'localhost'
+      IDENTIFIED BY 'new_test_pwd';
 FLUSH PRIVILEGES;

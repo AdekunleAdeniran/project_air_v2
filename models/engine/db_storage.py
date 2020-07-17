@@ -21,16 +21,16 @@ class DBStorage:
         '''Used to instantiate engine and create attributes'''
         self.__engine = create_engine(
             'mysql+mysqldb://{}:{}@{}/{}'.format(
-                getenv('HBNB_MYSQL_USER'),
-                getenv('HBNB_MYSQL_PWD'),
-                getenv('HBNB_MYSQL_HOST'),
-                getenv('HBNB_MYSQL_DB')),
+                getenv('new_MYSQL_USER'),
+                getenv('new_MYSQL_PWD'),
+                getenv('new_MYSQL_HOST'),
+                getenv('new_MYSQL_DB')),
             pool_pre_ping=True)
         Base.metadata.create_all(self.__engine)
         Session = sessionmaker(bind=self.__engine)
         self.__session = Session()
 
-        if getenv('HBNB_ENV') == 'test':
+        if getenv('new_ENV') == 'test':
             Base.metadata.drop_all(self.__engine)
 
     def all(self, cls=None):

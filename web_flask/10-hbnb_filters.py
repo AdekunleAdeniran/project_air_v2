@@ -15,8 +15,8 @@ def teardown_app(exception):
     storage.close()
 
 
-@app.route('/hbnb_filters')
-def hbnb_filter():
+@app.route('/new_filters')
+def new_filter():
     states = []
     for key, values in storage.all('State').items():
         states.append(values)
@@ -26,7 +26,7 @@ def hbnb_filter():
     amenities = []
     for key, values in storage.all('Amenity').items():
         amenities.append(values)
-    return render_template('10-hbnb_filters.html', states=states,
+    return render_template('10-new_filters.html', states=states,
                            cities=cities, amenities=amenities)
 
 

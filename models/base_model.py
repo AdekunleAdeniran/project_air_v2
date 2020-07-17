@@ -11,7 +11,7 @@ from sqlalchemy.ext.declarative import declarative_base
 from os import getenv
 
 
-if getenv('HBNB_TYPE_STORAGE') == 'db':
+if getenv('new_TYPE_STORAGE') == 'db':
     Base = declarative_base()
 else:
     Base = object

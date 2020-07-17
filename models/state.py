@@ -16,7 +16,7 @@ class State(BaseModel, Base):
     '''
         Implementation for the State.
     '''
-    if getenv('HBNB_TYPE_STORAGE') != 'db':
+    if getenv('new_TYPE_STORAGE') != 'db':
 
         @property
         def cities(self):

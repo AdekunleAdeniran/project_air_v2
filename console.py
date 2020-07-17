@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 '''
-    Implementing the console for the HBnB project.
+    Implementing the console for the new project.
 '''
 import cmd
 import json
@@ -18,14 +18,14 @@ from models.amenity import Amenity
 from models.review import Review
 
 
-class HBNBCommand(cmd.Cmd):
+class newCommand(cmd.Cmd):
     '''
         Contains the entry point of the command interpreter.
     '''
     group = {'BaseModel', 'User', 'State', 'City',
                           'Amenity', 'Place', 'Review'}
 
-    prompt = ("(hbnb) ")
+    prompt = ("(new) ")
 
     def do_quit(self, args):
         '''
@@ -241,4 +241,4 @@ if __name__ == "__main__":
     '''
         Entry point for the loop.
     '''
-    HBNBCommand().cmdloop()
+    newCommand().cmdloop()

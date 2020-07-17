@@ -12,7 +12,7 @@ class Amenity(BaseModel, Base):
     '''
         Implementation for the Amenities.
     '''
-    if getenv("HBNB_TYPE_STORAGE") == "db":
+    if getenv("new_TYPE_STORAGE") == "db":
         __tablename__ = "amenities"
         name = Column(String(128), nullable=False)
     else:

@@ -1,5 +1,5 @@
 # Synopsis
-![](https://s3.amazonaws.com/intranet-projects-files/concepts/74/hbnb_step2.png)
+![](https://s3.amazonaws.com/intranet-projects-files/concepts/74/new_step2.png)
 
 The Airbnb clone project for which we are creating a copy of the [Airbnb](https://www.airbnb.com/).
 Only some features will be implemented and will be listed below once completed.

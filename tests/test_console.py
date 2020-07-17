@@ -6,7 +6,7 @@ import sys
 import models
 import unittest
 from io import StringIO
-from console import HBNBCommand
+from console import newCommand
 from unittest.mock import create_autospec
 
 
@@ -23,8 +23,8 @@ class test_console(unittest.TestCase):
         sys.stdout = self.backup
 
     def create(self):
-        ''' create an instance of the HBNBCommand class'''
-        return HBNBCommand()
+        ''' create an instance of the newCommand class'''
+        return newCommand()
 
     def test_quit(self):
         ''' Test quit exists'''
